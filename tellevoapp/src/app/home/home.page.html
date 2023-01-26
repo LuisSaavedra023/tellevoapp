@@ -1,20 +1,57 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header class="toolbar">
+  <ion-toolbar class="toolbar">
+    <div class="logo">
+      <img src="/assets/img/logo3.jpeg" alt="">
+  
+    </div>
+    <!-- <div class=" ion-text-center titulo">
+      Te Llevo App
+    </div> -->
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
+<ion-content class="container">
 
-<ion-content >
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- <div class="container logo">
+    <img src="/assets/img/logo3.jpeg" alt="">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+    <strong class="center">Te Llevo App</strong> 
+
+  <div >
+    <ion-row class="center">
+      <ion-item  fill="solid" id="custom-item" counter="true" [counterFormatter]="customCounterFormatter">
+        <ion-label position="floating" class="fuente">Correo Institucional</ion-label>
+        <ion-input type="email" minlenght="15" maxlength="25" placeholder="ejemplo@duocuc.cl" class="custom" ></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row class="center">
+      <ion-item fill="solid" counter="true" >
+        <ion-label position="floating" class="fuente">Contraseña</ion-label>
+        <ion-input type="password" minlenght="5" maxlength="5" placeholder="Contraseña" class="custom" ></ion-input>
+      </ion-item>
+    </ion-row>
   </div>
+  
+  <div>
+    <button mat-fab extended id="button1">
+      Ingresar
+      <mat-icon> local_taxi </mat-icon>
+    </button>
+  </div>
+
+  <span>¿Has olvidado tu contraseña?</span>
+  
+  <div>
+    <button mat-fab extended id="button2">
+      Restablecer
+      <mat-icon> cached </mat-icon>
+    </button>
+  </div>
+  
+  <footer>
+    <ion-row>
+       Desarrollado por:  <br>
+       <p> Luis Saavedra Ramírez</p>  
+    </ion-row>
+  </footer>
 </ion-content>

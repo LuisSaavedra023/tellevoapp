@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
+  //creación de método para contar los caractéres del input email.
+  customCounterFormatter(inputLength: number, maxLength: number) {
+    return `${maxLength - inputLength} caractéres restantes`;
+  }
 
 }
