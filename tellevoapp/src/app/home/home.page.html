@@ -1,13 +1,14 @@
 <ion-header class="toolbar">
   <ion-toolbar class="toolbar">
-    <div class="logo">
+    <div class="logo animate__animated animate__flash animate__repeat-2">
       <img src="/assets/img/logo3.jpeg" alt="">
     </div>
   </ion-toolbar>
 </ion-header>
 <ion-content class="container">
   
-    <strong class="center">Te Llevo App</strong> 
+    <strong class="center animate__animated animate__rubberBand animate__repeat-3">Te Llevo App</strong> 
+    <!-- <strong class="center" id="animation1" name="animation1">Te Llevo App</strong>  -->
 
   <div >
     <ion-row class="center">
@@ -25,7 +26,7 @@
   </div>
   
   <div>
-    <button mat-fab extended id="button1" [routerLink]="['/conductor']">
+    <button mat-fab extended id="button1" class="animate__animated animate__lightSpeedInLeft" [routerLink]="['/conductor']">
       Ingresar
       <mat-icon> local_taxi </mat-icon>
     </button>
@@ -34,7 +35,7 @@
   <span>¿Has olvidado tu contraseña?</span>
   
   <div>
-    <button mat-fab extended id="button2" [routerLink]="['/restablecercontrasenia']">
+    <button mat-fab extended id="button2"class="animate__animated animate__lightSpeedInLeft" [routerLink]="['/restablecercontrasenia']">
       Restablecer
       <mat-icon> cached </mat-icon>
     </button>

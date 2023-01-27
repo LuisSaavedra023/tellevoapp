@@ -12,5 +12,5 @@ export class HomePage {
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
   }
-
+ 
 }
