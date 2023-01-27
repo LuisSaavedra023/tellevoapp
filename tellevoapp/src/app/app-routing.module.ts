@@ -22,6 +22,10 @@ const routes: Routes = [
     redirectTo: 'restablecercontrasenia',
     pathMatch: 'full'
   },
+  {
+    path: 'conductor',
+    loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
+  },
 ];
 
 @NgModule({
