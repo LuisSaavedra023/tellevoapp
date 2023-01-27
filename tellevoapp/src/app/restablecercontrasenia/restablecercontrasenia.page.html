@@ -1,13 +1,10 @@
-<ion-header class="toolbar">
-  <ion-toolbar class="toolbar">
-    <div class="logo">
-      <img src="/assets/img/logo3.jpeg" alt="">
-    </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Restablecer Contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="container">
-  
-    <strong class="center">Te Llevo App</strong> 
+
+<ion-content>
 
   <div >
     <ion-row class="center">
@@ -23,27 +20,23 @@
       </ion-item>
     </ion-row>
   </div>
-  
-  <div>
-    <button mat-fab extended id="button1">
-      Ingresar
-      <mat-icon> local_taxi </mat-icon>
-    </button>
-  </div>
 
-  <span>¿Has olvidado tu contraseña?</span>
-  
   <div>
-    <button mat-fab extended id="button2" [routerLink]="['/restablecercontrasenia']">
-      Restablecer
+    <button mat-fab  id="button1" [routerLink]="['/restablecercontrasenia']">
+      <!-- Restablecer -->
       <mat-icon> cached </mat-icon>
     </button>
+    <span>Restablecer</span>
   </div>
-  
-  <footer>
-    <ion-row>
-       Desarrollado por: 
-       <p> Luis Saavedra Ramírez</p>  
-    </ion-row>
-  </footer>
+
+  <mat-divider ></mat-divider>
+
+  <div>
+    <button mat-fab id="button2" [routerLink]="['/home']">
+      
+      <mat-icon> home </mat-icon>
+    </button>
+    <span>Volver</span>
+  </div>
+
 </ion-content>

@@ -13,6 +13,15 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'restablecercontrasenia',
+    loadChildren: () => import('./restablecercontrasenia/restablecercontrasenia.module').then( m => m.RestablecercontraseniaPageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'restablecercontrasenia',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

@@ -1,29 +1,29 @@
 .toolbar {
   margin: 0px;
   padding: 0px;
+  --background: white;
 }
-
 .logo {
   display: flex;
-  align-items: center;
-  height: 75px;
+  // align-items: center;
+  justify-content: center;
+  height: 100%;
   width: 100% !important;
   margin-top: 10px;
   margin-bottom: 10px;
   image-rendering: optimizeQuality;
+  background-color: white;
 }
 .center{
   display: flex;
   justify-content: center;
 }
-
 strong {
-  margin-top: 50px;
+  margin-top: 40px;
   color: rgb(255, 183, 28);
   font-style: italic; 
   font-size: xx-large;
   text-decoration: underline;
-  // text-shadow: 25px -20px 5px rgb(196, 134, 2);
 }
 ion-item {
   --border-color: rgb(255, 183, 28)
@@ -37,17 +37,16 @@ ion-input.custom {
   --background: rgb(221, 221, 221);
   --color: rgb(0, 22, 75);
 }
-
 ion-row {
   margin-top: 10px;
 }
-// centrado de botones
+//*****centrado de botones*****
 div button {
   display: flex;
   margin: 0 auto; 
   margin-top: 30px;
-  
 }
+//*****centrado de botones*****
 #button1 {
   background-color: rgb(255, 183, 28);
   color: rgb(0, 22, 75);
@@ -70,10 +69,10 @@ span {
   color: white;
   font-style: italic;
   display: flex;
-  
   justify-content: center;
   margin-top: 30px;
 }
+//*****centrado de footer*****
 footer ion-row{
   background-color: white;
   color: rgb(0, 22, 75);
@@ -84,25 +83,12 @@ footer ion-row{
   align-content: center;
   flex-direction: column;
 }
+//*****centrado de footer*****
 ion-row p {
   color:rgb(0, 22, 75);
   text-decoration: underline;
 }
-// #container {
-//   text-align: center;
 
-//   position: absolute;
-//   left: 0;
-//   right: 0;
-//   top: 20%;
-//   transform: translateY(-50%);
-// }
-
-// #container strong {
-//   font-size: 20px;
-//   line-height: 26px;
-//   color: rgb(0, 22, 75);
-// }
 
 
 
