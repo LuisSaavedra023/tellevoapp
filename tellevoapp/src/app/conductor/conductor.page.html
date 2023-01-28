@@ -1,41 +1,132 @@
 <ion-header>
   <ion-toolbar>
     <ion-row class="animate__animated animate__lightSpeedInRight">
-      <span>Conductor: </span>
-      <span>interpolacion</span>
+      <ion-col size="8">
+        <span>Conductor: </span>
+        <span>interpolacion</span>
+      </ion-col> 
+      <span class="animate__animated animate__heartBeat" id="title">
+        Tellevoapp
+      </span>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <nav>
+  <!-- <nav>
     <ion-row id="title">
       <button mat-button id="button-menu" [matMenuTriggerFor]="afterMenu">
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #afterMenu="matMenu" xPosition="after">
-        <button mat-menu-item class="sub-menu">
+        <button mat-menu-item class="sub-menu" [routerLink]="['/registrarvehiculo']">
           <mat-icon> security</mat-icon>
           Registrar vehículo
         </button>
         <mat-divider></mat-divider>
-        <!-- <button mat-menu-item class="sub-menu">
-          <mat-icon> directions_car</mat-icon>
-          Seleccionar vehículo
-        </button>
-        <mat-divider></mat-divider> -->
         <button mat-menu-item class="sub-menu">
           <mat-icon> cloud_queue</mat-icon>
           Historial de viajes
         </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item class="sub-menu">
+        <button mat-menu-item class="sub-menu" [routerLink]="['/home']">
           <mat-icon> subdirectory_arrow_left</mat-icon>
           Salir
         </button>
       </mat-menu>
       <span class="animate__animated animate__heartBeat">Tellevoapp</span>
     </ion-row>
-  </nav>
+  </nav> -->
+  
+  <mat-tab-group animationDuration="2000ms" >
+    <mat-tab >
+      <ng-template mat-tab-label >
+        <mat-icon class="example-tab-icon">home</mat-icon>
+        Inicio
+      </ng-template>
+      Content 1
+    </mat-tab>
+    <!-- **********registro vehículo********** -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">security</mat-icon>
+        Registrar
+      </ng-template>
+
+        <form action="">
+          <div >
+            <ion-row class="center">
+              <ion-item  fill="solid" id="custom-item" counter="true" [counterFormatter]="customCounterFormatter">
+                <ion-label position="floating" class="fuente">
+                  Patente
+                </ion-label>
+                <ion-input type="text" minlenght="6" maxlength="6" placeholder="ej:xxyy99" class="custom" ></ion-input>
+              </ion-item>
+            </ion-row>
+            <ion-row class="center">
+              <ion-item fill="solid" counter="true" >
+                <ion-label position="floating" class="fuente">
+                  Dirección
+                </ion-label>
+                <ion-input type="text" minlenght="15" maxlength="30" placeholder="ej:calle siempre viva #174" class="custom" ></ion-input>
+              </ion-item>
+            </ion-row>
+            <ion-row class="center">
+              <ion-item fill="solid" counter="true" >
+                <ion-label position="floating" class="fuente">
+                  Tarifa
+                </ion-label>
+                <ion-input type="number" minlenght="3" maxlength="5" placeholder="ej: 1000" class="custom" ></ion-input>
+              </ion-item>
+            </ion-row>
+            <ion-row class="center">
+              <ion-item class="ion-text-center">
+                <ion-select interface="popover" placeholder="Seleccione capacidad" >
+                  <ion-select-option value="1" class="ion-text-center">
+                    1
+                  </ion-select-option>
+                  <ion-select-option value="2" class="ion-text-center">
+                    2
+                  </ion-select-option>
+                  <ion-select-option value="3" class="ion-text-center">
+                    3
+                  </ion-select-option>
+                  <ion-select-option value="4" class="ion-text-center">
+                    4
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              
+            </ion-row>
+          </div>
+          
+          <div>
+            <button mat-fab extended id="button1" class="center" >
+              Registrar
+              <mat-icon> save </mat-icon>
+            </button>
+          </div>
+          <mat-divider></mat-divider>
+        </form>
+        <div>
+          <button mat-fab extended id="button2" class="center" [routerLink]="['/home']">
+            Salir
+            <mat-icon> subdirectory_arrow_left </mat-icon>
+          </button>
+        </div>
+      
+    </mat-tab>
+    <!-- **********registro vehículo********** -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">cloud_queue</mat-icon>
+        Historial
+      </ng-template>
+  
+      Content 3
+    </mat-tab>
+  </mat-tab-group>
+   
 </ion-content>
+
