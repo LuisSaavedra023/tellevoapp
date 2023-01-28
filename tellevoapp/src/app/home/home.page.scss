@@ -88,12 +88,9 @@ ion-row p {
   color:rgb(0, 22, 75);
   text-decoration: underline;
 }
-
+//*****animation*****
 .animate__animated.animate__rubberBand {
   --animate-duration: 1.5s;
-  // --animate-delay: 20s;
-  // --animate-repeat: infinite;
-  // animation-fill-mode: forwards;
 }
 .animate__animated.animate__flash {
   --animate-duration: 1.2s;
@@ -101,3 +98,4 @@ ion-row p {
 .animate__animated.animate__lightSpeedInLeft {
   --animate-duration: 2s;
 }
+//*****animation*****

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row>
+    <ion-row class="animate__animated animate__lightSpeedInRight">
       <span>Conductor: </span>
       <span>interpolacion</span>
     </ion-row>
@@ -11,7 +11,31 @@
 
   <nav>
     <ion-row id="title">
-      barra de navegacion
+      <button mat-button id="button-menu" [matMenuTriggerFor]="afterMenu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item class="sub-menu">
+          <mat-icon> security</mat-icon>
+          Registrar vehículo
+        </button>
+        <mat-divider></mat-divider>
+        <!-- <button mat-menu-item class="sub-menu">
+          <mat-icon> directions_car</mat-icon>
+          Seleccionar vehículo
+        </button>
+        <mat-divider></mat-divider> -->
+        <button mat-menu-item class="sub-menu">
+          <mat-icon> cloud_queue</mat-icon>
+          Historial de viajes
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item class="sub-menu">
+          <mat-icon> subdirectory_arrow_left</mat-icon>
+          Salir
+        </button>
+      </mat-menu>
+      <span class="animate__animated animate__heartBeat">Tellevoapp</span>
     </ion-row>
   </nav>
 </ion-content>

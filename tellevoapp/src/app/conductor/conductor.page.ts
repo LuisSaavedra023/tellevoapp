@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ConductorPage implements OnInit {
 
   constructor() { }
+  
 
   ngOnInit() {
   }
