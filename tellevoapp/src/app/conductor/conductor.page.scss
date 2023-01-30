@@ -38,6 +38,12 @@ ion-toolbar ion-row {
     justify-content: center;
     margin-top: 10px;
 }
+.align {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    padding-top: 30px;
+}
 //**********registro**********
 ion-label.fuente {
     font-style: italic;
@@ -48,15 +54,19 @@ ion-item {
     --background: white;
     --border-color: rgb(0, 22, 75)
 }
+// ion-input {
+//     --background: white;
+// }
 div button {
     //**centrado**
     display: flex;
-    margin: 0 auto; 
-    margin-top: 30px;
+    margin: 0 auto;
+    
 }
 ion-select {
     width: 210px;
     margin-top: 30px;
+    --color: rgb(0, 22, 75)
 }
 #button1 {
     color: white;
@@ -72,12 +82,11 @@ ion-select {
     border-color: rgb(0, 22, 75);
     border-style: ridge;
     font-style: italic;
-    // font-weight: bolder;
     width: 130px;
 }
 mat-divider {
     border-top-color: rgb(255, 183, 28);
-    margin-top: 20px;
+    margin-top: 25px;
 }
 //**********registro**********
 //*****animation*****

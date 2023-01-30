@@ -77,7 +77,7 @@
                 <ion-label position="floating" class="fuente">
                   Tarifa
                 </ion-label>
-                <ion-input type="number" minlenght="3" maxlength="5" placeholder="ej: 1000" class="custom" ></ion-input>
+                <ion-input type="text" minlenght="3" maxlength="4" placeholder="ej: 1000" class="custom" ></ion-input>
               </ion-item>
             </ion-row>
             <ion-row class="center">
@@ -97,24 +97,50 @@
                   </ion-select-option>
                 </ion-select>
               </ion-item>
-              
+            </ion-row>
+            <ion-row class="center">
+              <ion-item class="ion-text-center">
+                <ion-select interface="popover" placeholder="Seleccione sede" >
+                  <ion-select-option value="Puente Alto" class="ion-text-center">
+                    Puente Alto
+                  </ion-select-option>
+                  <ion-select-option value="Maipú" class="ion-text-center">
+                    Maipú
+                  </ion-select-option>
+                  <ion-select-option value="Antonio Varas" class="ion-text-center">
+                    Antonio Varas
+                  </ion-select-option>
+                  <ion-select-option value="La Florida" class="ion-text-center">
+                    La Florida
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
             </ion-row>
           </div>
+          <!-- <mat-divider></mat-divider> -->
+
+          <!-- <ion-row class="align">
+            <ion-col size="6" class="align"> -->
+              <div class="align">
+                <button mat-fab extended id="button1" class="center" >
+                  Registrar
+                  <mat-icon> save </mat-icon>
+                </button>
+
+                <button mat-fab extended id="button2" class="center" [routerLink]="['/home']">
+                  Salir
+                  <mat-icon> subdirectory_arrow_left </mat-icon>
+                </button>
+              </div>  
+              
+            <!-- </ion-col>
+            <ion-col size="6"> -->
+              
+            <!-- </ion-col>
+          </ion-row> -->
           
-          <div>
-            <button mat-fab extended id="button1" class="center" >
-              Registrar
-              <mat-icon> save </mat-icon>
-            </button>
-          </div>
-          <mat-divider></mat-divider>
         </form>
-        <div>
-          <button mat-fab extended id="button2" class="center" [routerLink]="['/home']">
-            Salir
-            <mat-icon> subdirectory_arrow_left </mat-icon>
-          </button>
-        </div>
+        
       
     </mat-tab>
     <!-- **********registro vehículo********** -->
