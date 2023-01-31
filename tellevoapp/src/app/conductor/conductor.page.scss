@@ -62,9 +62,12 @@ div button {
     
 }
 ion-select {
-    width: 210px;
+    width: 240px;
     margin-top: 30px;
     --color: rgb(0, 22, 75)
+}
+ion-input {
+    width: 240px;
 }
 #button1 {
     color: white;
@@ -82,6 +85,14 @@ ion-select {
     font-style: italic;
     width: 130px;
 }
+#button3 {
+    color: rgb(0, 22, 75);
+    background-color: rgb(255, 183, 28);
+    font-style: italic;
+    width: 150px;
+    margin: 0 auto;
+    
+}
 mat-divider {
     border-top-color: rgb(255, 183, 28);
     margin-top: 25px;
@@ -90,7 +101,30 @@ mat-divider {
 //**********historial de viajes**********
 table {
     width: 100%;
-  }
+    margin-top: 30px;
+}
+th,td {
+    font-style: italic;
+    text-align: left;
+    border-color: rgb(255, 183, 28);
+    
+}
+th {
+    color: rgb(196, 134, 2);
+    text-decoration: underline;
+}
+td {
+    color:rgb(0, 22, 75);
+    
+}
+tr:nth-child(even) {
+    background-color: rgb(242, 239, 239);
+}
+ion-footer{
+    margin-top: 10px;
+    height: 10%;
+}
+
 //**********historial de viajes**********
 //*****animation*****
 .animate__animated.animate__lightSpeedInRight {
