@@ -14,6 +14,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatMenuModule,
     MatDividerModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   declarations: [ConductorPage]
 })

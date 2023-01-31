@@ -54,9 +54,7 @@ ion-item {
     --background: white;
     --border-color: rgb(0, 22, 75)
 }
-// ion-input {
-//     --background: white;
-// }
+
 div button {
     //**centrado**
     display: flex;
@@ -89,6 +87,11 @@ mat-divider {
     margin-top: 25px;
 }
 //**********registro**********
+//**********historial de viajes**********
+table {
+    width: 100%;
+  }
+//**********historial de viajes**********
 //*****animation*****
 .animate__animated.animate__lightSpeedInRight {
     --animate-duration: 2s;
