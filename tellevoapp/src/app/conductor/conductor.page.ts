@@ -20,14 +20,13 @@ export class ConductorPage implements OnInit  {
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
   }
-  //****prueba */
+  //****prueba tabla historial de viajes*/
   
   displayedColumns: string[] = ['pasajero', 'direccion', 'tarifa'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    /**maps */
+  /**********Maps**********/
+  showMap(){
     //cargado de mapa con las coordenadas de inicio.
     const map = new Map('map').setView([-33.59901, -70.5784], 13);
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -43,21 +42,25 @@ export class ConductorPage implements OnInit  {
         map.invalidateSize();
       }, 100);
     });
-    /**maps */
+  }
+  /**********Maps**********/
+  ngAfterViewInit() {
+    this.showMap();
     /**table */
     this.dataSource.paginator = this.paginator;
     /**table */
   }
-  //****prueba */
+  //****prueba tabla historial de viajes*/
+  //****prueba tabla inicio*/
+  displayedPassengers: string[] = ['pasajero', 'direccion'];
+  dataPassengers= new MatTableDataSource<Passengers>(DATA_PASSENGERS);
+  //****prueba tabla inicio*/
 
-  ngOnInit() {
-
-    
-  }
+  ngOnInit() { }
   
 
 }
-//***prueba */
+//***prueba tabla historial de viajes*/
 export interface PeriodicElement {
   nombre: string;
   direccion: string;
@@ -74,7 +77,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
   
 ];
-//***prueba */
-//***prueba */
+//***prueba tabla historial de viajes */
+//***prueba tabla inicio */
+export interface Passengers {
+  nombre: string;
+  direccion: string;
+}
 
-//***prueba */
+const DATA_PASSENGERS: Passengers[] = [
+  {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+  {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174'},
+  {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+  {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+  
+];
+//***prueba tabla inicio */
+

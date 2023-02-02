@@ -4,7 +4,9 @@ ion-toolbar {
 }
 ion-content {
     --background: white;
-    --color: rgb(0, 22, 75); 
+    --color: rgb(0, 22, 75);
+    
+    
 }
 ion-row span {
     font-style: italic;
@@ -21,6 +23,9 @@ ion-toolbar ion-row {
  mat-tab-group {
     font-style: italic;
     --color: rgb(0, 22, 75);
+    // padding-bottom: 0;
+    // display: flex;
+    // justify-content: space-between;
 }
 
 .example-tab-icon {
@@ -44,12 +49,89 @@ ion-toolbar ion-row {
     position: relative;
     padding-top: 30px;
 }
+
 //********inicio**********
 #map {
     width: 100%;
     height: 180px;
 }
-
+#table {
+    margin: -10px;
+}
+.font-th {
+    font-style: italic;
+    text-align: center;
+    font-size: small;
+    color: rgb(0, 22, 75);
+    background-color: rgb(255, 183, 28);
+    
+}
+.font-td {
+    font-style: italic;
+    text-align: center;
+    font-size: small;
+    color: rgb(0, 22, 75);
+    
+}
+#tarifa{
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding-right: 10px;
+    text-align: center;
+    font-style: italic;
+    text-align: center;
+    font-size: small;
+    color: rgb(0, 22, 75);
+    // display: flex;
+    // justify-content: center;
+}
+#input-driver {
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 15px;
+    color: rgb(0, 22, 75);
+    --border-color: rgb(255, 183, 28);
+}
+#color-button {
+    color: rgb(0, 22, 75);
+}
+//***buttons****
+#button-init {
+    color: rgb(0, 22, 75);
+    background-color: rgb(255, 183, 28);
+    font-style: italic;
+}
+#button-cancel {
+    color: white;
+    background-color: rgb(252, 53, 53);
+    font-style: italic;
+}
+#button-exit {
+    background-color: transparent;
+    border-style: solid;
+    border-color: rgb(255, 183, 28);
+    color: white;
+    font-style: italic;
+}
+.display {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+#footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(0, 22, 75);
+}
+.label-input {
+    font-weight: 500;
+}
+//***buttons****
 //********inicio**********
 //**********registro**********
 ion-label.fuente {
@@ -77,8 +159,8 @@ ion-input {
     width: 240px;
 }
 #button1 {
-    color: white;
-    background-color: rgb(0, 22, 75);
+    background-color: white;
+    color: rgb(0, 22, 75);
     border-color: rgb(196, 134, 2);
     border-style: ridge;
     font-style: italic;
