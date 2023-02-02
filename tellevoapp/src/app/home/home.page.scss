@@ -35,8 +35,8 @@ ion-label.fuente {
   --color: rgb(255, 183, 28)
 }
 ion-input.custom {
-  --background: rgb(221, 221, 221);
-  --color: rgb(0, 22, 75);
+  --color: white;
+  --background: rgb(0, 22, 75);
 }
 ion-row {
   margin-top: 10px;
@@ -53,18 +53,15 @@ div button {
   color: rgb(0, 22, 75);
   border-color: rgb(196, 134, 2);
   border-style: ridge;
-  font-style: italic;
-  font-weight: bolder;
-  
+  font-style: italic; 
+  width: 160px;
 }
 #button2 {
   background-color: white;
   color: rgb(0, 22, 75);
   border-color: rgb(1, 45, 147);
   border-style: ridge;
-  font-style: italic;
-  font-weight: bolder;
-  
+  font-style: italic;  
 }
 span {
   color: white;
@@ -74,11 +71,11 @@ span {
   margin-top: 30px;
 }
 //*****centrado de footer*****
-footer ion-row{
+ion-footer ion-row{
   background-color: white;
   color: rgb(0, 22, 75);
-  margin-top: 30px;
-  padding-bottom: 100%;
+  margin-top: 40px;
+  height: 10%;
   font-style: italic;
   display: flex;
   align-content: center;
@@ -97,6 +94,6 @@ ion-row p {
   --animate-duration: 1.2s;
 }
 .animate__animated.animate__lightSpeedInLeft {
-  --animate-duration: 2s;
+  --animate-duration: 3.2s;
 }
 //*****animation*****

@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
+import { Map, marker, tileLayer } from 'leaflet';
+import * as L from 'leaflet';
 
 
 @Component({
@@ -25,11 +27,32 @@ export class ConductorPage implements OnInit  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
+    /**maps */
+    //cargado de mapa con las coordenadas de inicio.
+    const map = new Map('map').setView([-33.59901, -70.5784], 13);
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    //**********Marker**********/
+    marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
+    //**********Marker**********/
+    //renderización del 100% del mapa en el contenedor (div)
+    map.whenReady(() => {
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+    });
+    /**maps */
+    /**table */
     this.dataSource.paginator = this.paginator;
+    /**table */
   }
   //****prueba */
 
   ngOnInit() {
+
+    
   }
   
 

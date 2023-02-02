@@ -45,7 +45,7 @@
         <mat-icon class="example-tab-icon">home</mat-icon>
         Inicio
       </ng-template>
-      Content 1
+      <div id="map"></div>
     </mat-tab>
     <!-- **********registro vehículo********** -->
     <mat-tab>
@@ -159,12 +159,6 @@
             <th mat-header-cell *matHeaderCellDef> Tarifa </th>
             <td mat-cell *matCellDef="let element" > {{element.tarifa}} </td>
           </ng-container>
-      
-          <!-- Symbol Column -->
-          <!-- <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-          </ng-container> -->
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
