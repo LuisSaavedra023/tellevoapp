@@ -68,8 +68,7 @@ ion-toolbar ion-row {
 }
 #input-driver {
     text-align: center;
-    // margin-top: 5px;
-    margin-bottom: 35px;
+    // margin-bottom: 35px;
     font-style: italic;
     font-size: 15px;
     color: rgb(0, 22, 75);
@@ -122,8 +121,48 @@ ion-toolbar ion-row {
 .label-input {
     font-weight: 500;
 }
-
-//***buttons****
+#nodrivers {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    font-size: large;
+    font-weight: 500px;
+    color: rgb(0, 22, 75);
+}
+#position {
+    position: absolute;
+    margin-top: 70px;
+}
+#error-icon {
+    color: rgb(0, 22, 75);
+    margin-bottom: 30px;
+    background-color: rgb(255, 183, 28);
+    border-style: groove;
+    border-color: rgb(0, 22, 75);
+    padding: 5px;
+}
+//***ajuste tamaño de ícono.
+.material-icons.md-48 {
+    font-size: 48px; 
+}
+#button-exit-error {
+    background-color: white;
+    border-style: solid;
+    border-color: rgb(255, 183, 28);
+    color: rgb(0, 22, 75);
+    font-style: italic;
+    width: 200px;
+}
+#error-icon-historial {
+    background-color: white;
+    color: rgb(0, 22, 75);
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
 //********inicio**********
 //**********registro**********
 ion-label.fuente {
@@ -210,6 +249,14 @@ ion-footer{
 }
 .animate__animated.animate__fadeInUp{
     --animate-duration: 7s;
+}
+.animate__animated.animate__zoomOutRight {
+    --animate-duration: 4s;
+    animation-iteration-count: infinite;
+}
+.animate__animated.animate__shakeX {
+    --animate-duration: 4s;
+    animation-iteration-count: infinite;
 }
 //*****animation*****
 nav ion-row  {
