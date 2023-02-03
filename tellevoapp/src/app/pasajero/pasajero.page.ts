@@ -1,17 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Map, marker, tileLayer } from 'leaflet';
 
-
 @Component({
-  selector: 'app-conductor',
-  templateUrl: './conductor.page.html',
-  styleUrls: ['./conductor.page.scss'],
-  
+  selector: 'app-pasajero',
+  templateUrl: './pasajero.page.html',
+  styleUrls: ['./pasajero.page.scss'],
 })
-
-export class ConductorPage implements OnInit  {
+export class PasajeroPage implements OnInit {
 
   constructor() { }
   //creación de método para contar los caractéres de la patente.
@@ -50,11 +47,11 @@ export class ConductorPage implements OnInit  {
   }
   //****prueba tabla historial de viajes*/
   //****prueba tabla inicio*/
-  displayedPassengers: string[] = ['pasajero', 'direccion'];
-  dataPassengers= new MatTableDataSource<Passengers>(DATA_PASSENGERS);
+  displayedDrivers: string[] = ['conductor', 'patente', 'tarifa'];
+  dataDrivers= new MatTableDataSource<Passengers>(DATA_DRIVERS);
   //****prueba tabla inicio*/
-
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }
 //***prueba tabla historial de viajes*/
@@ -78,15 +75,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 //***prueba tabla inicio */
 export interface Passengers {
   nombre: string;
-  direccion: string;
+  patente: string;
+  tarifa: number;
 }
 
-const DATA_PASSENGERS: Passengers[] = [
-  {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
-  {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174'},
-  {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
-  {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+const DATA_DRIVERS: Passengers[] = [
+  {nombre: "Luis Saavedra", patente: 'lvuh93', tarifa: 1000},
+  {nombre: "Marcelo Perez", patente: 'lvuh93', tarifa: 1000},
+  {nombre: "Luis Saavedra", patente: 'lvuh93', tarifa: 1000},
+  {nombre: "Luis Saavedra", patente: 'lvuh93', tarifa: 1000},
   
 ];
 //***prueba tabla inicio */
-

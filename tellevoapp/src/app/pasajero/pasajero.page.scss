@@ -10,16 +10,9 @@ ion-row span {
     font-style: italic;
     font-size: large;
 }
-// nav span {
-//     padding-right: 15px;
-// }
 ion-toolbar ion-row {
     display: flex;
     justify-content: space-between;
-}
- mat-tab-group {
-    font-style: italic;
-    --color: rgb(0, 22, 75);
 }
 .example-tab-icon {
     margin-right: 2px;
@@ -74,14 +67,24 @@ ion-toolbar ion-row {
     color: rgb(0, 22, 75);
 }
 #input-driver {
-    margin-top: 10px;
+    text-align: center;
+    // margin-top: 5px;
+    margin-bottom: 35px;
     font-style: italic;
     font-size: 15px;
     color: rgb(0, 22, 75);
-    --border-color: rgb(255, 183, 28);
+    --border-color: rgb(0, 22, 75);
 }
 #color-button {
-    color: rgb(0, 22, 75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    background-color:rgb(255, 183, 28);
+    border-style: solid;
+    border-color: rgb(196, 134, 2);
+    height: 30px;
 }
 //***buttons****
 #button-init {
@@ -231,4 +234,3 @@ nav ion-row span {
     display: flex;
     justify-content: center;
 }
-
