@@ -37,38 +37,33 @@ ion-toolbar ion-row {
 //********inicio**********
 #map {
     width: 100%;
-    height: 180px;
+    height: 220px;
 }
-#table {
-    margin: -10px;
+
+.filling {
+    min-height: 10vh;
+    
 }
 .font-th {
     font-style: italic;
     text-align: center;
     font-size: small;
-    color: rgb(0, 22, 75);
-    background-color: rgb(255, 183, 28);
-    
+    color: rgb(0, 22, 75);    
 }
 .font-td {
     font-style: italic;
     text-align: center;
-    font-size: small;
+    font-size: smaller;
     color: rgb(0, 22, 75);
+    padding: 0;
 }
-#tarifa{
-    margin-top: 20px;
-    margin-bottom: 0;
-    padding-right: 10px;
-    text-align: center;
-    font-style: italic;
-    text-align: center;
-    font-size: small;
-    color: rgb(0, 22, 75);
+#center-check {
+    position: relative;
+    right: 10px;
 }
 #input-driver {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
     font-style: italic;
     font-size: 15px;
     color: rgb(0, 22, 75);
@@ -102,11 +97,6 @@ ion-toolbar ion-row {
     border-color: rgb(255, 183, 28);
     color: white;
     font-style: italic;
-}
-.display {
-    display: flex;
-    justify-content: center;
-    padding: 0;
 }
 #footer {
     display: flex;
@@ -163,6 +153,56 @@ ion-toolbar ion-row {
     justify-content: center;
     width: 200px;
 }
+//****travel
+ion-nav {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    height: 40px;
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(196, 134, 2);
+    font-style: italic;
+    font-size: large;
+    box-shadow: 7px -7px 5px rgb(47, 46, 46);
+    background-color: rgb(0, 22, 75);
+    color: rgb(255, 183, 28);
+}
+.info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 5px;
+    padding-right: 8px;
+    height: 200px;
+}
+li {
+    list-style: square;
+    font-style: italic;
+    margin-bottom: 10px;
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 22, 75);
+}
+.button-travel {
+    padding: 0;
+    width: 170px;
+    border-style: solid;
+    border-width: 2.5px;
+    border-radius: 3px;
+    border-color: rgb(176, 170, 170);
+}
+#space-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+//****travel
 //********inicio**********
 //**********registro**********
 ion-label.fuente {
@@ -217,7 +257,6 @@ mat-divider {
 //**********historial de viajes**********
 table {
     width: 100%;
-    margin-top: 30px;
 }
 th,td {
     font-style: italic;
@@ -234,9 +273,20 @@ td {
 tr:nth-child(even) {
     background-color: rgb(242, 239, 239);
 }
-ion-footer{
-    margin-top: 10px;
-    height: 10%;
+.total {
+    margin-top: 25px;
+    height: 50px;
+    background-color: rgb(255, 183, 28);
+    color: rgb(0, 22, 75);
+    border-style: outset;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: rgb(196, 134, 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    font-size: large;
 }
 //**********historial de viajes**********
 //*****animation*****
@@ -248,7 +298,7 @@ ion-footer{
     animation-iteration-count: infinite;
 }
 .animate__animated.animate__fadeInUp{
-    --animate-duration: 7s;
+    --animate-duration: 10s;
 }
 .animate__animated.animate__zoomOutRight {
     --animate-duration: 4s;
@@ -257,6 +307,14 @@ ion-footer{
 .animate__animated.animate__shakeX {
     --animate-duration: 4s;
     animation-iteration-count: infinite;
+}
+.animate__animated.animate__bounceOut{
+    --animate-duration: 8s;
+    animation-iteration-count: infinite;
+}
+.animate__animated.animate__lightSpeedOutRight{
+    --animate-duration: 3.5s;
+    animation-iteration-count: infinite; 
 }
 //*****animation*****
 nav ion-row  {

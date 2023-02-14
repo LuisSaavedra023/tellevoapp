@@ -1,18 +1,21 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild, } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Map, marker, tileLayer } from 'leaflet';
 
 //****prueba datos para ambas tablas */
-export interface PeriodicElement {
-  nombre: string;
-  direccion: string;
-  tarifa: number;
-}
 export interface Passengers {
+  nombrePasajero: string;
+  direccionPasajero: string;
+  tarifaPasajero: number;
+}
+export interface Drivers {
   nombre: string;
   patente: string;
+  capacidad: number;
   tarifa: number;
+  position: number
 }
 //****prueba datos para ambas tablas */
 @Component({
@@ -29,38 +32,70 @@ export class PasajeroPage implements OnInit {
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
   }
+  //*****prueba tabla inicio */
+  conductores: Drivers[] = [
+    // {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 1},
+    // {nombre: "Marcelo Perez", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 2},
+    // {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 3},
+    // {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 4},
+  ];
+
+  displayedDrivers: string[] = ['conductor', 'patente','capacidad', 'tarifa', 'check'];
+  dataDrivers= new MatTableDataSource<Drivers>(this.conductores);
+  //***alias mat-paginator */
+  @ViewChild('paginatorInit') paginatorInit: MatPaginator;
   //*****prueba tabla historial de viajes*/
-  pasajeros: PeriodicElement[] = [
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
+  pasajeros: Passengers[] = [
+    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
+    {nombrePasajero: "Marcelo Perez", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
+    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
+    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
+    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
+    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
   ];
 
   displayedColumns: string[] = ['pasajero', 'direccion', 'tarifa'];
-  dataSource = new MatTableDataSource<PeriodicElement>(this.pasajeros);
+  dataSource = new MatTableDataSource<Passengers>(this.pasajeros);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('paginatorHistory') paginatorHistory: MatPaginator;
+
   //***prueba tabla historial de viajes */
-  //*****prueba tabla inicio */
-  conductores: Passengers[] = [
-    {nombre: "Luis Saavedra", patente: 'lvuh93', tarifa: 1000},
-    {nombre: "Marcelo Perez", patente: 'lvuh93', tarifa: 1000},
-    {nombre: "Luis Saavedra", patente: 'lvuh93', tarifa: 1000},
-    {nombre: "Luis Saavedra", patente: 'lvuh93', tarifa: 1000},
-  ];
+  //*****checkbox */
+  selection = new SelectionModel<Drivers>(false, []);
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataDrivers.data.length;
+    return numSelected === numRows;
+  }
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
 
-  displayedDrivers: string[] = ['conductor', 'patente', 'tarifa'];
-  dataDrivers= new MatTableDataSource<Passengers>(this.conductores);
-  //***prueba tabla inicio */
+    this.selection.select(...this.dataDrivers.data);
+  }
+  checkboxLabel(row?: Drivers): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+  //*****checkbox */
+  //*** total de viajes realizados */
+  totalRow(){
+    //***se obtienen los datos del datasource. */
+    var rows = this.dataSource.filteredData.length;
+    
+    return rows
+  }
   //*****prueba tablas */
   ngAfterViewInit() {
     this.showMap();
     /**table */
-    this.dataSource.paginator = this.paginator;
-    this.dataDrivers.paginator = this.paginator;
+    this.dataDrivers.paginator = this.paginatorInit;
+    this.dataSource.paginator = this.paginatorHistory;
+    
     /**table */
   }
   //*****prueba tablas */
