@@ -204,44 +204,7 @@ li {
 }
 //****travel
 //********inicio**********
-//**********registro**********
-ion-label.fuente {
-    font-style: italic;
-    font-size: large;
-    --color: rgb(0, 22, 75)
-}
-ion-item {
-    --background: white;
-    --border-color: rgb(0, 22, 75)
-}
-div button {
-    //**centrado**
-    display: flex;
-    margin: 0 auto;
-}
-ion-select {
-    width: 240px;
-    margin-top: 30px;
-    --color: rgb(0, 22, 75)
-}
-ion-input {
-    width: 240px;
-}
-#button1 {
-    background-color: white;
-    color: rgb(0, 22, 75);
-    border-color: rgb(196, 134, 2);
-    border-style: ridge;
-    font-style: italic;
-}
-#button2 {
-    color: rgb(0, 22, 75);
-    background-color: rgb(255, 183, 28);
-    border-color: rgb(0, 22, 75);
-    border-style: ridge;
-    font-style: italic;
-    width: 130px;
-}
+
 #button3 {
     color: rgb(0, 22, 75);
     background-color: rgb(255, 183, 28);
@@ -253,7 +216,7 @@ mat-divider {
     border-top-color: rgb(255, 183, 28);
     margin-top: 25px;
 }
-//**********registro**********
+
 //**********historial de viajes**********
 table {
     width: 100%;
@@ -289,6 +252,76 @@ tr:nth-child(even) {
     font-size: large;
 }
 //**********historial de viajes**********
+//**********admin**********
+.navbar-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: larger;
+    font-style: italic;
+    font-weight: 700;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: rgb(255, 183, 28);
+    background-color: rgb(0, 22, 75);
+    color: rgb(196, 134, 2);
+}
+#content-admin{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+    margin-top: 30px;
+}
+#driver {
+    display: flex;
+    justify-content: space-around;
+    width: 250px;
+    height: 40px;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: medium;
+    border-style: groove;
+    border-width: 5px;
+    border-radius: 5px;
+    border-color: rgb(196, 134, 2);
+    box-shadow: 10px 10px 10px rgb(0, 22, 75);
+    color: white;
+    background: linear-gradient(to right,rgb(0, 22, 75), rgb(255, 183, 28));
+}
+#passenger{
+    display: flex;
+    justify-content: space-around;
+    width: 250px;
+    height: 40px;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: medium;
+    box-shadow: 10px 10px 10px rgb(0, 22, 75);
+    color: white;
+    background: linear-gradient(rgb(0, 22, 75), rgb(255, 183, 28));
+}
+#delete-data{
+    display: flex;
+    justify-content: space-around;
+    width: 250px;
+    height: 40px;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: medium;
+    box-shadow: 10px 10px 10px rgb(0, 22, 75);
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: rgb(255, 183, 28);
+    color: white;
+    background: linear-gradient(to bottom right, rgb(196, 134, 2), rgb(0, 22, 75));
+}
+//**********admin**********
 //*****animation*****
 .animate__animated.animate__lightSpeedInRight {
     --animate-duration: 2s;
@@ -315,6 +348,10 @@ tr:nth-child(even) {
 .animate__animated.animate__lightSpeedOutRight{
     --animate-duration: 3.5s;
     animation-iteration-count: infinite; 
+}
+.animate__animated.animate__jello{
+    --animate-duration: 3s;
+    animation-iteration-count: infinite;
 }
 //*****animation*****
 nav ion-row  {

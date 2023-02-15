@@ -34,10 +34,10 @@ export class PasajeroPage implements OnInit {
   }
   //*****prueba tabla inicio */
   conductores: Drivers[] = [
-    // {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 1},
-    // {nombre: "Marcelo Perez", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 2},
-    // {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 3},
-    // {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 4},
+    {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 1},
+    {nombre: "Marcelo Perez", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 2},
+    {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 3},
+    {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 4},
   ];
 
   displayedDrivers: string[] = ['conductor', 'patente','capacidad', 'tarifa', 'check'];

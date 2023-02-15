@@ -129,18 +129,7 @@
             <li>Conductor interpolacion</li>
             <li>Patente interpolacion</li>
             <li>Destino interpolacion</li>
-            <!-- <ion-col class="info-conductor ">
-              <span class="space-info">Conductor</span>
-              <span class="space-info1">interpolacion</span>
-              <span class="space-info">Patente</span>
-              <span class="space-info1">interpolacion</span>
-              <span class="space-info">Destino</span>
-              <span >interpolacion</span>
-            </ion-col> -->
           </ion-row>
-          <!-- <mat-divider ></mat-divider>     -->
-              
-          
         </div>  
 
           <ion-footer id="footer" class="animate__animated animate__fadeInUp">
@@ -232,6 +221,43 @@
     </ng-template>
     </mat-tab>
     <!-- **********historial de viajes********** -->
+    <!-- **********admin********** -->
+    <mat-tab>
+      <ng-template mat-tab-label >
+        <mat-icon class="example-tab-icon">person</mat-icon>
+        Admin
+      </ng-template>
+      <ion-row>
+        <div class="navbar-admin">
+          <span class="animate__animated animate__jello">Bienvenido Administrador</span>
+        </div>
+      </ion-row>
+
+      <div id="content-admin">
+        <button mat-raised-button id="driver" >
+          <span class="material-icons md-45" >local_taxi</span>
+          Insertar conductor 
+        </button>
+        <button mat-raised-button id="driver" >
+          <span class="material-icons md-45" >delete</span>
+          Eliminar conductor
+        </button>
+        <button mat-raised-button id="passenger" >
+          <span class="material-icons md-45" >directions_run</span>
+          Insertar pasajero
+        </button>
+        <button mat-raised-button id="passenger" >
+          <span class="material-icons md-45" >person_remove</span>
+          Eliminar pasajero
+        </button>
+        <button mat-raised-button id="delete-data" >
+          <span class="material-icons md-45" >pan_tool</span>
+          Eliminar registros
+        </button>
+      </div>
+
+    </mat-tab>
+    <!-- **********admin********** -->
   </mat-tab-group>
 
 </ion-content>
