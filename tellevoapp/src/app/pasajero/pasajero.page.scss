@@ -186,7 +186,6 @@ li {
     list-style: square;
     font-style: italic;
     margin-bottom: 10px;
-    background-color: rgb(245, 245, 245);
     color: rgb(0, 22, 75);
 }
 .button-travel {
@@ -204,14 +203,6 @@ li {
 }
 //****travel
 //********inicio**********
-
-#button3 {
-    color: rgb(0, 22, 75);
-    background-color: rgb(255, 183, 28);
-    font-style: italic;
-    width: 150px;
-    margin: 0 auto;   
-}
 mat-divider {
     border-top-color: rgb(255, 183, 28);
     margin-top: 25px;
@@ -250,6 +241,18 @@ tr:nth-child(even) {
     align-items: center;
     font-style: italic;
     font-size: large;
+}
+#button-exit-error {
+    width: 200px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    font-size: large;
+    border-style: solid;
+    border-color: rgb(255, 183, 28);
+    color: white;
+    background: linear-gradient(to bottom right, rgb(0, 22, 75), rgb(255, 183, 28));
 }
 //**********historial de viajes**********
 //**********admin**********

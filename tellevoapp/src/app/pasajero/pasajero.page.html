@@ -24,7 +24,7 @@
       <div id="map"></div>
       <!-- maps -->
       <!-- si existen conductores disponibles en la bd se permitirá al pasajero ingresar la dirección, seleccionar un conductor y comenzar el viaje, en caso contrario de mostrará el template con el alias nodrivers -->
-      <ng-container *ngIf="conductores.length > 0 else travel">
+      <ng-container *ngIf="conductores.length > 0 else nodrivers">
 
         <ion-item  id="input-driver" >
           <ion-label class="label-input">Dirección:</ion-label>
@@ -117,7 +117,7 @@
 
         </ion-footer>
       </ng-template>
-
+      <!-- cuando el viaje esté en curso -->
       <ng-template #travel>
         
         <ion-nav >
@@ -154,7 +154,7 @@
         <mat-icon class="example-tab-icon">cloud_queue</mat-icon>
         Historial
       </ng-template>
-      
+
       <ng-container *ngIf="pasajeros.length > 0 else notravels"  >
         
         <div class="mat-elevation-z8" >
@@ -195,7 +195,7 @@
 
         <div class="filling"></div>
         <ion-footer id="footer" class="animate__animated animate__fadeInUp">
-          <button mat-raised-button shape="round"  id="button3" class="center" [routerLink]="['/home']">
+          <button mat-raised-button shape="round"  id="button-exit-error" class="center" [routerLink]="['/home']">
             Salir
             <mat-icon > reply </mat-icon>
           </button>
@@ -219,6 +219,7 @@
 
       </ion-footer>
     </ng-template>
+    
     </mat-tab>
     <!-- **********historial de viajes********** -->
     <!-- **********admin********** -->

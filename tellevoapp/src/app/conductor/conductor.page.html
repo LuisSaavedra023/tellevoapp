@@ -25,7 +25,16 @@
       <!-- maps -->
       <ng-container *ngIf="pasajeros.length > 0 else nopassengers">
 
-        <p id="tarifa">Tarifa actual: interpolacion</p>
+        <ion-row class="modify-data">
+          <p id="tarifa">Tarifa actual: interpolacion</p>
+          
+          <button mat-raised-button id="button-modify">
+            <mat-icon>cached </mat-icon> 
+            Modificar Datos
+            </button>
+    
+        </ion-row>
+        
         <ion-item  id="input-driver">
           <ion-label class="label-input">Modificar tarifa:</ion-label>
           <ion-input placeholder="Valor tarifa" [clearInput]="true" type="text" minlenght="3" maxlength="4"></ion-input>
@@ -77,7 +86,7 @@
         </ion-footer>
 
       </ng-container>
-      <!-- Si no existen conductores en la bd se mostrará el siguiente template -->
+      <!-- Si no existen pasajeros en la bd se mostrará el siguiente template -->
       <ng-template #nopassengers >
         <div id="nopassengers">
           <span class="material-icons md-48 animate__animated animate__zoomOutRight" id="error-icon">
@@ -88,98 +97,83 @@
         <ion-footer id="footer" class="animate__animated animate__fadeInUp">
       
           <button mat-raised-button id="button-exit-error"  [routerLink]="['/home']">
-            <mat-icon>reply</mat-icon>
+            <span class="material-icons md-30 ">reply</span>
+            <!-- <mat-icon></mat-icon> -->
             Salir
           </button>
 
         </ion-footer>
       </ng-template>
+      <!-- si el conductor no está registrado en la bd -->
+      <ng-template #noregister>
 
-    </mat-tab>
-    <!-- **********registro vehículo********** -->
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon">security</mat-icon>
-        Registrar
+        <div id="nopassengers">
+          <span class="material-icons md-48 animate__animated animate__bounceInDown" id="error-icon">
+            car_crash
+          </span>
+          <span id="position">Registra tu vehículo</span>
+        </div>
+        <ion-footer id="footer-register" class="animate__animated animate__fadeInUp">
+          
+          <button mat-raised-button id="driver" >
+            <span class="material-icons md-45" >local_taxi</span>
+            Registrar 
+          </button>
+          <button mat-raised-button id="passenger" [routerLink]="['/home']">
+            <span class="material-icons md-36" >reply</span>
+            Salir 
+          </button>
+
+        </ion-footer>
+
+      </ng-template>
+      <!-- cuando el viaje esté en curso -->
+      <ng-template #travel>
+
+        <ion-nav >
+          <span class="animate__animated animate__lightSpeedOutRight">
+            Tu viaje está en curso
+          </span>
+        </ion-nav>
+
+        <div id="content-card">
+        
+          <mat-card class="card-passenger">
+            
+            <mat-card-header >
+              <mat-card-title id="title-card">Pasajero</mat-card-title>
+            </mat-card-header>
+            
+            <mat-card-content>
+              direccion interpolacion
+            </mat-card-content>
+            
+          </mat-card>          
+          
+        </div>
+        
+        <ion-row class="content-report">
+          <button mat-raised-button id="button-travel">
+            <mat-icon>warning</mat-icon>
+            Ingresar reporte
+          </button>
+        </ion-row>
+
+        <ion-footer id="footer" class="animate__animated animate__fadeInUp">
+      
+          <button mat-raised-button id="button-finish"  [routerLink]="['/home']">
+            <span class="material-icons md-36 " >
+              done
+            </span>
+            Finalizar viaje
+            
+          </button>
+
+        </ion-footer>
+
       </ng-template>
 
-        <form action="">
-          <div >
-            <ion-row class="center">
-              <ion-item  fill="solid" id="custom-item" counter="true" [counterFormatter]="customCounterFormatter">
-                <ion-label position="floating" class="fuente">
-                  Patente
-                </ion-label>
-                <ion-input type="text" minlenght="6" maxlength="6" placeholder="ej:xxyy99" class="custom" ></ion-input>
-              </ion-item>
-            </ion-row>
-            <ion-row class="center">
-              <ion-item fill="solid" counter="true" >
-                <ion-label position="floating" class="fuente">
-                  Dirección
-                </ion-label>
-                <ion-input type="text" minlenght="15" maxlength="30" placeholder="ej:calle siempre viva #174" class="custom" ></ion-input>
-              </ion-item>
-            </ion-row>
-            <ion-row class="center">
-              <ion-item fill="solid" counter="true" >
-                <ion-label position="floating" class="fuente">
-                  Tarifa
-                </ion-label>
-                <ion-input type="text" minlenght="3" maxlength="4" placeholder="ej: 1000" class="custom" ></ion-input>
-              </ion-item>
-            </ion-row>
-            <ion-row class="center">
-              <ion-item class="ion-text-center">
-                <ion-select interface="popover" placeholder="Seleccione capacidad" >
-                  <ion-select-option value="1" class="ion-text-center">
-                    1
-                  </ion-select-option>
-                  <ion-select-option value="2" class="ion-text-center">
-                    2
-                  </ion-select-option>
-                  <ion-select-option value="3" class="ion-text-center">
-                    3
-                  </ion-select-option>
-                  <ion-select-option value="4" class="ion-text-center">
-                    4
-                  </ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-row>
-            <ion-row class="center">
-              <ion-item class="ion-text-center">
-                <ion-select interface="popover" placeholder="Seleccione sede" >
-                  <ion-select-option value="Puente Alto" class="ion-text-center">
-                    Puente Alto
-                  </ion-select-option>
-                  <ion-select-option value="Maipú" class="ion-text-center">
-                    Maipú
-                  </ion-select-option>
-                  <ion-select-option value="Antonio Varas" class="ion-text-center">
-                    Antonio Varas
-                  </ion-select-option>
-                  <ion-select-option value="La Florida" class="ion-text-center">
-                    La Florida
-                  </ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-row>
-          </div>
-          <ion-footer id="footer" class="animate__animated animate__fadeInUp">
-            <button mat-raised-button id="button1" >
-              Registrar
-              <mat-icon> save </mat-icon>
-            </button>
-
-            <button mat-raised-button id="button2" [routerLink]="['/home']">
-              Salir
-              <mat-icon> reply </mat-icon>
-            </button>
-          </ion-footer>
-        </form>
     </mat-tab>
-    <!-- **********registro vehículo********** -->
     <!-- **********historial de viajes********** -->
     <mat-tab >
       <ng-template mat-tab-label>
@@ -218,8 +212,12 @@
           </mat-paginator>
         </div>
 
+        <div class="total">
+          <span class="animate__animated animate__bounceOut">Viajes realizados: {{totalRow()}}</span>
+        </div>
+        
         <ion-footer id="footer" class="animate__animated animate__fadeInUp">
-          <button mat-raised-button shape="round"  id="button3" class="center" [routerLink]="['/home']">
+          <button mat-raised-button shape="round"  id="button-exit-error" class="center" [routerLink]="['/home']">
             Salir
             <mat-icon > reply </mat-icon>
           </button>

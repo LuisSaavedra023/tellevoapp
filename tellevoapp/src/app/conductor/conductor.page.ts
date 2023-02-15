@@ -24,35 +24,6 @@ export interface PeriodicElement {
 export class ConductorPage implements OnInit  {
 
   constructor() { }
-  //creación de método para contar los caractéres de la patente.
-  customCounterFormatter(inputLength: number, maxLength: number) {
-    return `${maxLength - inputLength} caractéres restantes`;
-  }
-  //****prueba tabla historial de viajes*/
-  conductores: PeriodicElement[] = [
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
-    
-  ];
-  displayedColumns: string[] = ['pasajero', 'direccion', 'tarifa'];
-  dataSource = new MatTableDataSource<PeriodicElement>(this.conductores);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  //****prueba tabla historial de viajes*/
-  //****prueba tabla inicio*/
-  pasajeros: Passengers[] = [
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
-    {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174'},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
-    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
-    
-  ];
-  displayedPassengers: string[] = ['pasajero', 'direccion'];
-  dataPassengers= new MatTableDataSource<Passengers>(this.pasajeros);
-  //****prueba tabla inicio*/
-
-  
   /**********Maps**********/
   showMap(){
     //cargado de mapa con las coordenadas de inicio.
@@ -72,6 +43,35 @@ export class ConductorPage implements OnInit  {
     });
   }
   /**********Maps**********/
+  //creación de método para contar los caractéres de la patente.
+  customCounterFormatter(inputLength: number, maxLength: number) {
+    return `${maxLength - inputLength} caractéres restantes`;
+  }
+  //****prueba tabla inicio*/
+  pasajeros: Passengers[] = [
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+    {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174'},
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174'},
+    
+  ];
+  displayedPassengers: string[] = ['pasajero', 'direccion'];
+  dataPassengers= new MatTableDataSource<Passengers>(this.pasajeros);
+  //****prueba tabla inicio*/
+  //****prueba tabla historial de viajes*/
+  conductores: PeriodicElement[] = [
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
+    {nombre: "Marcelo Perez", direccion: 'Calle siempre viva #174', tarifa: 1000},
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
+    {nombre: "Luis Saavedra", direccion: 'Calle siempre viva #174', tarifa: 1000},
+    
+  ];
+  displayedColumns: string[] = ['pasajero', 'direccion', 'tarifa'];
+  dataSource = new MatTableDataSource<PeriodicElement>(this.conductores);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  //****prueba tabla historial de viajes*/
   //*****prueba tablas */
   ngAfterViewInit() {
     this.showMap();
@@ -80,7 +80,13 @@ export class ConductorPage implements OnInit  {
     /**table */
   }
   //*****prueba tablas */
-
+  //*** total de viajes realizados */
+  totalRow(){
+    //***se obtienen los datos del datasource. */
+    var rows = this.dataSource.filteredData.length;
+    
+    return rows
+  }
   ngOnInit() { }
 
 }
