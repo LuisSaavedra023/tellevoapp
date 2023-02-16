@@ -325,6 +325,9 @@ tr:nth-child(even) {
     background: linear-gradient(to bottom right, rgb(196, 134, 2), rgb(0, 22, 75));
 }
 //**********admin**********
+.alertCustomCss{
+    background-color: red;
+}
 //*****animation*****
 .animate__animated.animate__lightSpeedInRight {
     --animate-duration: 2s;

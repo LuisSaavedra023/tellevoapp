@@ -27,3 +27,58 @@
 
 /* leaflet */
 @import url("https://unpkg.com/leaflet@1.7.1/dist/leaflet.css");
+//**********alerts passengers*********
+.alertCustomCss .alert-wrapper {
+    background: linear-gradient(white, 85%, rgb(0, 22, 75));
+    .alert-head{
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        background: rgb(0, 22, 75);
+        
+        h2{
+            font-size: x-large;
+            font-weight: 700;
+        }
+    }
+    .alert-message{
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+        padding: 20px;
+        color:rgb(0, 22, 75);
+        
+        span{
+            display: flex;
+            align-items: center;
+            text-align: justify;
+            font-size: larger;
+            padding-top: 30px;
+        }
+        
+    }
+    .alert-button-group{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        button{
+            display: flex;
+            justify-content: center;
+            width: 80px;
+            height: 40px;
+            border-radius: 10%;
+            color: white;
+            background: rgb(0, 22, 75);
+
+            span{
+                display: flex;
+                justify-content: center; 
+                font-style: oblique;
+                font-size: medium;
+            }
+            
+        }
+    }
+}
+//**********alerts passengers*********

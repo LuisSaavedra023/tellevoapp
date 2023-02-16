@@ -1,8 +1,12 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild, } from '@angular/core';
+
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+
 import { Map, marker, tileLayer } from 'leaflet';
+
+import { AlertController } from '@ionic/angular';
 
 //****prueba datos para ambas tablas */
 export interface Passengers {
@@ -27,7 +31,7 @@ export interface Drivers {
 
 export class PasajeroPage implements OnInit {
   
-  constructor() { }
+  constructor(private alertController: AlertController) { }
   //creación de método para contar los caractéres de la patente.
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
@@ -118,6 +122,39 @@ export class PasajeroPage implements OnInit {
     });
   }
   /**********Maps**********/
+  /**********alerts**********/
+  //***input directions */
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      // subHeader: 'Important message',
+      message: '<span>Dirección ingresada con éxito.</span>',
+      buttons: [{
+        text: 'Ok',
+        role: 'confirm'
+      }],
+      cssClass: 'alertCustomCss',
+    });
+
+    await alert.present();
+  }
+  //***init travel */
+  async initTravel() {
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      // subHeader: 'Important message',
+      message: '<span>Busca tu vehículo y espera a iniciar el viaje.</span>',
+      buttons: [{
+        text: 'Ok',
+        role: 'confirm'
+      }],
+      cssClass: 'alertCustomCss',
+    });
+
+    await alert.present();
+  }
+  /**********alerts**********/
+
   ngOnInit() { }
   
 }
