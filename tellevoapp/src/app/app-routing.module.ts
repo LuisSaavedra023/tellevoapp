@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'pasajero',
     loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule)
   },
+  {
+    path: 'dialoglogin',
+    loadChildren: () => import('./dialog/dialoglogin/dialoglogin.module').then( m => m.DialogloginPageModule)
+  },
   
 ];
 

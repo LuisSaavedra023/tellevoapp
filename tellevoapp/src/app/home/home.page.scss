@@ -16,6 +16,7 @@
 .center{
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 strong {
   margin-top: 40px;
@@ -52,15 +53,18 @@ div button {
   color: rgb(0, 22, 75);
   border-color: rgb(196, 134, 2);
   border-style: ridge;
-  font-style: italic; 
-  width: 160px;
+  font-style: italic;
+  font-size: medium; 
+  width: 200px;
 }
 #button2 {
   background-color: white;
   color: rgb(0, 22, 75);
   border-color: rgb(1, 45, 147);
   border-style: ridge;
-  font-style: italic;  
+  font-style: italic;
+  font-size: medium; 
+  width: 200px;  
 }
 span {
   color: white;
@@ -78,14 +82,14 @@ ion-footer {
   bottom: 0;
   width: 100%;
   height: 60px;
-  background-color: white;
-  color: rgb(0, 22, 75);
+  background: linear-gradient(rgb(255, 183, 28), 40%, rgb(0, 22, 75));
+  color: white;
   font-style: italic;
 }
 //*****footer*****
 ion-row p {
   padding-left: 5px;
-  color:rgb(0, 22, 75);
+  color:white;
   text-decoration: underline;
 }
 //*****animation*****

@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { IonicModule } from '@ionic/angular';
+
+import { DialogloginPageRoutingModule } from './dialoglogin-routing.module';
+
+import { DialogloginPage } from './dialoglogin.page';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    DialogloginPageRoutingModule,
+    MatDialogModule,
     MatButtonModule,
-    MatIconModule,
     MatDialogModule
   ],
-  declarations: [HomePage]
+  declarations: [DialogloginPage]
 })
-export class HomePageModule {}
+export class DialogloginPageModule {}
