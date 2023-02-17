@@ -88,12 +88,12 @@
             Subete!
           </button>
         
-          <button mat-raised-button id="button-cancel">
+          <button mat-raised-button id="button-cancel" >
             <mat-icon> close</mat-icon>
             Cancelar
           </button>
         
-          <button mat-raised-button id="button-init"  [routerLink]="['/home']">
+          <button mat-raised-button id="button-init" (click)="alertExit()">
             <mat-icon>reply</mat-icon>
             Salir
           </button>

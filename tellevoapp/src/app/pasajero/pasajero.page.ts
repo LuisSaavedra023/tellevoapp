@@ -8,6 +8,8 @@ import { Map, marker, tileLayer } from 'leaflet';
 
 import { AlertController } from '@ionic/angular';
 
+import { Router } from '@angular/router';
+
 //****prueba datos para ambas tablas */
 export interface Passengers {
   nombrePasajero: string;
@@ -31,7 +33,7 @@ export interface Drivers {
 
 export class PasajeroPage implements OnInit {
   
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, public route: Router) { }
   //creación de método para contar los caractéres de la patente.
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
@@ -144,15 +146,59 @@ export class PasajeroPage implements OnInit {
       header: 'DuocUc',
       // subHeader: 'Important message',
       message: '<span>Busca tu vehículo y espera a iniciar el viaje.</span>',
+      cssClass: 'alertCustomCss',
       buttons: [{
         text: 'Ok',
         role: 'confirm'
       }],
-      cssClass: 'alertCustomCss',
+      
     });
 
     await alert.present();
   }
+  //***cancel travel */
+  async alertExit() {
+    // const alert = await this.alertController.create({
+    //   header: 'DuocUc',
+    //   subHeader: '¿Seguro que deseas salir?',
+    //   message: '<span>Si estas en espera de un viaje, éste se cancelará .</span>',
+    //   cssClass: 'custom-alert',
+    //   buttons: [
+    //     {
+    //       text: 'No',
+    //       cssClass: 'alert-button-cancel',
+    //     },
+    //     {
+    //       text: 'Yes',
+    //       cssClass: 'alert-button-confirm',
+    //     },
+    //   ],
+    // });
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      subHeader: '¿Seguro que deseas salir?',
+      message: '<span>Si éstas en espera de un viaje, éste se cancelará.</span>',
+      cssClass: 'alertExit',
+      buttons: [
+        {
+          text: 'Ok',
+          cssClass: 'alert-button-confirm',
+          handler: () => {
+            this.route.navigate(['/home'])
+          }
+        },
+        {
+          text: 'Cancelar',
+          cssClass: 'alert-button-cancel',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+    // await alert.present();
+  // }
   /**********alerts**********/
 
   ngOnInit() { }
