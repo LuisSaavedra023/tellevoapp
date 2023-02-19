@@ -30,6 +30,7 @@
 //**********alerts passengers*********
 .alertCustomCss .alert-wrapper {
     background: linear-gradient(white, 85%, rgb(0, 22, 75));
+    
     .alert-head{
         display: flex;
         justify-content: center;
@@ -81,7 +82,24 @@
         }
     }
 }
-ion-alert.alertExit{
+//***toast cancel
+ion-toast.custom-toast {
+    --background: rgb(17, 36, 82);
+    --color: white;
+    font-size: larger;
+    font-style: italic;    
+}
+ion-toast.custom-toast::part(message) {
+    display: flex;
+    justify-content: center;
+}
+ion-toast.custom-toast::part(icon) {
+    position: relative;
+    left:15%
+}
+//***toast cancel
+//***alert cancel
+ion-alert.alertCancel{
     //***opacidad al fondo de la pantalla
     --backdrop-opacity: 0.80;
 
@@ -95,7 +113,7 @@ ion-alert.alertExit{
     }
     .alert-sub-title{
         width: 100%;
-        background: linear-gradient(white, 95%, rgb(0, 22, 75));
+        background: white;
         color:rgb(0, 22, 75);
     }
     .alert-message{
@@ -139,5 +157,88 @@ ion-alert.alertExit{
         }
     }
 }
+//***toast-report
+ion-toast.toast-report {
+    --background: rgb(17, 36, 82);
+    --color: white;
+    font-size: larger;
+    font-style: italic; 
+    height: 1200px;   
+}
+ion-toast.toast-report::part(message) {
+    display: flex;
+    justify-content: center;
+}
+ion-toast.toast-report::part(icon) {
+    position: relative;
+    left:25%
+}
+//***alert exit
+ion-alert.alertExit{
+    //***opacidad al fondo de la pantalla.
+    --backdrop-opacity: 0.80;
+    //cambio de color de la fuente al ingresar un reporte.
+    textarea.alert-input{
+        color: rgb(0, 22, 75);
+    }
+
+    .alert-wrapper{
+        background: linear-gradient(white, 85%, rgb(0, 22, 75));
+    }    
+    .alert-head{
+        text-align: center;
+        padding: 0;
+        background: rgb(0, 22, 75);
+    }
+    .alert-sub-title{
+        width: 100%;
+        background: white;
+        color:rgb(0, 22, 75);
+    }
+    .alert-message{
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+        color:rgb(0, 22, 75);
+        
+        span{
+            display: flex;
+            align-items: center;
+            text-align: justify;
+            font-size: large;
+            padding-top: 20px;
+        }
+        
+
+    }
+    .alert-button-group{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        span{
+            display: flex;
+            justify-content: center; 
+            font-style: oblique;
+            font-size: medium;
+        }
+        .alert-button-confirm{
+            width: 90px;
+            height: 35px;
+            border-radius: 10%;
+            color: white;
+            background: rgb(0, 22, 75);
+        }
+        .alert-button-cancel{
+            width: 95px;
+            height: 35px;
+            border-radius: 10%;
+            color: white;
+            background: red;
+        }
+    }
+    
+}
+
 
 //**********alerts passengers*********

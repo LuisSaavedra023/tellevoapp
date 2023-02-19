@@ -88,7 +88,7 @@
             Subete!
           </button>
         
-          <button mat-raised-button id="button-cancel" >
+          <button mat-raised-button id="button-cancel" (click)="cancelTravel()">
             <mat-icon> close</mat-icon>
             Cancelar
           </button>
@@ -100,7 +100,7 @@
 
         </ion-footer>
       </ng-container>
-      <!-- Si no existen conductores en la bd se mostrará el siguiente template -->
+      <!-- si no existen conductores en la bd se mostrará el siguiente template -->
       <ng-template #nodrivers >
         <div id="nodrivers">
           <span class="material-icons md-48 animate__animated animate__zoomOutRight" id="error-icon">
@@ -138,7 +138,7 @@
               <mat-icon>pan_tool</mat-icon>
               Cerrar
             </button>
-            <button mat-raised-button class="button-travel">
+            <button mat-raised-button class="button-travel" (click)="alertReport()">
               <mat-icon>warning</mat-icon>
               Ingresar reporte
             </button>
@@ -195,7 +195,7 @@
 
         <div class="filling"></div>
         <ion-footer id="footer" class="animate__animated animate__fadeInUp">
-          <button mat-raised-button shape="round"  id="button-exit-error" class="center" [routerLink]="['/home']">
+          <button mat-raised-button shape="round"  id="button-exit-error" class="center" (click)="alertExit()">
             Salir
             <mat-icon > reply </mat-icon>
           </button>

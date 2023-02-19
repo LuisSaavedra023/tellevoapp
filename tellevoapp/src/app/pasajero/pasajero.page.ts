@@ -7,6 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Map, marker, tileLayer } from 'leaflet';
 
 import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
 
@@ -33,7 +34,7 @@ export interface Drivers {
 
 export class PasajeroPage implements OnInit {
   
-  constructor(private alertController: AlertController, public route: Router) { }
+  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController) { }
   //creación de método para contar los caractéres de la patente.
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
@@ -144,7 +145,6 @@ export class PasajeroPage implements OnInit {
   async initTravel() {
     const alert = await this.alertController.create({
       header: 'DuocUc',
-      // subHeader: 'Important message',
       message: '<span>Busca tu vehículo y espera a iniciar el viaje.</span>',
       cssClass: 'alertCustomCss',
       buttons: [{
@@ -156,28 +156,49 @@ export class PasajeroPage implements OnInit {
 
     await alert.present();
   }
-  //***cancel travel */
+  //toast messaje
+  async cancelToast() {
+    const toast = await this.toastController.create({
+      message: 'Has cancelado tu viaje',
+      duration: 1800,
+      position: 'middle',
+      icon: 'close',
+      cssClass: 'custom-toast'
+    });
+
+    await toast.present();
+  }
+  //***cancel */
+  async cancelTravel() {
+   
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      message: '<span>¿Seguro que deseas cancelar tu viaje?</span>',
+      cssClass: 'alertCancel',
+      buttons: [
+        {
+          text: 'Ok',
+          cssClass: 'alert-button-confirm',
+          handler: (x => setTimeout(() => {
+            this.cancelToast()
+          }, 500))
+        },
+        {
+          text: 'Cancelar',
+          cssClass: 'alert-button-cancel',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+  //***exit */
   async alertExit() {
-    // const alert = await this.alertController.create({
-    //   header: 'DuocUc',
-    //   subHeader: '¿Seguro que deseas salir?',
-    //   message: '<span>Si estas en espera de un viaje, éste se cancelará .</span>',
-    //   cssClass: 'custom-alert',
-    //   buttons: [
-    //     {
-    //       text: 'No',
-    //       cssClass: 'alert-button-cancel',
-    //     },
-    //     {
-    //       text: 'Yes',
-    //       cssClass: 'alert-button-confirm',
-    //     },
-    //   ],
-    // });
+   
     const alert = await this.alertController.create({
       header: 'DuocUc',
       subHeader: '¿Seguro que deseas salir?',
-      message: '<span>Si éstas en espera de un viaje, éste se cancelará.</span>',
+      message: '<span>Si estas en espera de un viaje, éste se cancelará.</span>',
       cssClass: 'alertExit',
       buttons: [
         {
@@ -196,9 +217,73 @@ export class PasajeroPage implements OnInit {
 
     await alert.present();
   }
+  //toast report
+  async reportToast() {
+    const toast = await this.toastController.create({
+      message: 'Reporte enviado',
+      duration: 2000,
+      position: 'middle',
+      icon: 'clipboard',
+      cssClass: 'toast-report'
+    });
 
-    // await alert.present();
-  // }
+    await toast.present();
+  }
+  //***report */
+  async alertReport() {
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      cssClass: 'alertExit',
+      inputs: [
+        // {
+        //   placeholder: 'Name',
+        // },
+        // {
+        //   placeholder: 'Nickname (max 8 characters)',
+        //   attributes: {
+        //     maxlength: 8,
+        //   },
+        // },
+        // {
+        //   type: 'number',
+        //   placeholder: 'Age',
+        //   min: 1,
+        //   max: 100,
+        // },
+        {
+          type: 'textarea',
+          placeholder: 'Tienes un límite de 100 carácteres',
+          attributes: {
+            minlenght:10,
+            maxlength: 100,
+          },
+        },
+      ],
+      buttons: [
+        {
+          text: 'Ok',
+          cssClass: 'alert-button-confirm',
+          handler: ((x => {
+            
+            var longitud = Object.values(x);
+
+            if (longitud.toString().length > 0 ) {
+              this.reportToast()
+            }
+            
+          })) 
+          
+        },
+        {
+          text: 'Cancelar',
+          cssClass: 'alert-button-cancel',
+        },
+      ],
+      
+    });
+
+    await alert.present();
+  }
   /**********alerts**********/
 
   ngOnInit() { }
