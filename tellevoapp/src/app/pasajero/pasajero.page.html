@@ -29,7 +29,7 @@
         <ion-item  id="input-driver" >
           <ion-label class="label-input">Dirección:</ion-label>
           <ion-input placeholder="ej: calle viva #174" [clearInput]="true" type="text" minlenght="15" maxlength="30" ></ion-input>
-          <button mat-raised-button id="color-button" (click)="presentAlert()">
+          <button mat-raised-button id="color-button" (click)="presentAlert('<span>Dirección ingresada con éxito.</span>')">
             <mat-icon>check</mat-icon>
           </button>
         </ion-item>
@@ -83,7 +83,7 @@
         <div class="filling"></div>
         <ion-footer id="footer" class="animate__animated animate__fadeInUp">
       
-          <button mat-raised-button id="button-exit" (click)="initTravel()">
+          <button mat-raised-button id="button-exit" (click)="presentAlert('<span>Busca tu vehículo y espera a iniciar el viaje.</span>')">
             <mat-icon> local_taxi</mat-icon>
             Subete!
           </button>
@@ -254,6 +254,10 @@
         <button mat-raised-button id="delete-data" >
           <span class="material-icons md-45" >pan_tool</span>
           Eliminar registros
+        </button>
+        <button mat-raised-button id="delete-data" (click)="alertRegister()">
+          <span class="material-icons md-45" >add_reaction</span>
+          Insertar alumno
         </button>
       </div>
 

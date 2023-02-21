@@ -39,6 +39,25 @@ export class PasajeroPage implements OnInit {
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
   }
+  /**********Maps**********/
+  showMap(){
+    //cargado de mapa con las coordenadas de inicio.
+    const map = new Map('map').setView([-33.59901, -70.5784], 13);
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    //**********Marker**********/
+    marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
+    //**********Marker**********/
+    //renderización del 100% del mapa en el contenedor (div)
+    map.whenReady(() => {
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+    });
+  }
+  /**********Maps**********/
   //*****prueba tabla inicio */
   conductores: Drivers[] = [
     {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 1},
@@ -106,67 +125,45 @@ export class PasajeroPage implements OnInit {
     /**table */
   }
   //*****prueba tablas */
-  /**********Maps**********/
-  showMap(){
-    //cargado de mapa con las coordenadas de inicio.
-    const map = new Map('map').setView([-33.59901, -70.5784], 13);
-    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    //**********Marker**********/
-    marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
-    //**********Marker**********/
-    //renderización del 100% del mapa en el contenedor (div)
-    map.whenReady(() => {
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 100);
-    });
-  }
-  /**********Maps**********/
   /**********alerts**********/
-  //***input directions */
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'DuocUc',
-      // subHeader: 'Important message',
-      message: '<span>Dirección ingresada con éxito.</span>',
-      buttons: [{
-        text: 'Ok',
-        role: 'confirm'
-      }],
-      cssClass: 'alertCustomCss',
-    });
+  //***mensajes toast */
+  messageCancelTravel = '<span>Viaje cancelado.</span>';
+  messageReport = '<span>Reporte enviado.</span>';
+  messageRegister = '<span>Alumno insertado.</span>'
 
-    await alert.present();
-  }
-  //***init travel */
-  async initTravel() {
-    const alert = await this.alertController.create({
-      header: 'DuocUc',
-      message: '<span>Busca tu vehículo y espera a iniciar el viaje.</span>',
-      cssClass: 'alertCustomCss',
-      buttons: [{
-        text: 'Ok',
-        role: 'confirm'
-      }],
-      
-    });
+  messageToast(message: string){
 
-    await alert.present();
+    let mensaje = message;
+
+    return mensaje;
   }
-  //toast messaje
-  async cancelToast() {
+  //toast messaje recibe por parámetro el mensaje y el ícono.
+  async Toast(mensaje: string, icono: string ) {
     const toast = await this.toastController.create({
-      message: 'Has cancelado tu viaje',
-      duration: 1800,
+      message: mensaje,
+      duration: 750,
       position: 'middle',
-      icon: 'close',
+      icon: icono,
       cssClass: 'custom-toast'
     });
 
     await toast.present();
+  }
+  //***mensajes toast */
+  //alert que contiene la modificación de la tarifa y el inicio del viaje.
+  async presentAlert(message : string) {
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      message: message,
+      buttons: [{
+        text: 'Ok',
+        cssClass: 'alert-button-confirm',
+          
+      }],
+      cssClass: 'alertCustomCss',
+    });
+
+    await alert.present();
   }
   //***cancel */
   async cancelTravel() {
@@ -174,13 +171,13 @@ export class PasajeroPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'DuocUc',
       message: '<span>¿Seguro que deseas cancelar tu viaje?</span>',
-      cssClass: 'alertCancel',
+      cssClass: 'alertCustomCss',
       buttons: [
         {
           text: 'Ok',
           cssClass: 'alert-button-confirm',
           handler: (x => setTimeout(() => {
-            this.cancelToast()
+            this.Toast(this.messageCancelTravel, 'close')
           }, 500))
         },
         {
@@ -198,8 +195,8 @@ export class PasajeroPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'DuocUc',
       subHeader: '¿Seguro que deseas salir?',
-      message: '<span>Si estas en espera de un viaje, éste se cancelará.</span>',
-      cssClass: 'alertExit',
+      message: '<span>Si estás en espera de un viaje, éste se cancelará.</span>',
+      cssClass: 'alertCustomCss',
       buttons: [
         {
           text: 'Ok',
@@ -217,39 +214,12 @@ export class PasajeroPage implements OnInit {
 
     await alert.present();
   }
-  //toast report
-  async reportToast() {
-    const toast = await this.toastController.create({
-      message: 'Reporte enviado',
-      duration: 2000,
-      position: 'middle',
-      icon: 'clipboard',
-      cssClass: 'toast-report'
-    });
-
-    await toast.present();
-  }
   //***report */
   async alertReport() {
     const alert = await this.alertController.create({
       header: 'DuocUc',
-      cssClass: 'alertExit',
+      cssClass: 'alertCustomCss',
       inputs: [
-        // {
-        //   placeholder: 'Name',
-        // },
-        // {
-        //   placeholder: 'Nickname (max 8 characters)',
-        //   attributes: {
-        //     maxlength: 8,
-        //   },
-        // },
-        // {
-        //   type: 'number',
-        //   placeholder: 'Age',
-        //   min: 1,
-        //   max: 100,
-        // },
         {
           type: 'textarea',
           placeholder: 'Tienes un límite de 100 carácteres',
@@ -268,7 +238,7 @@ export class PasajeroPage implements OnInit {
             var longitud = Object.values(x);
 
             if (longitud.toString().length > 0 ) {
-              this.reportToast()
+              this.Toast(this.messageReport, 'clipboard')
             }
             
           })) 
@@ -280,6 +250,66 @@ export class PasajeroPage implements OnInit {
         },
       ],
       
+    });
+
+    await alert.present();
+  }
+  //***register */
+  async alertRegister() {
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      cssClass:'alertCustomCss',
+      inputs: [
+        { 
+          type: 'text',
+          placeholder: 'Rut',
+          attributes: {
+            minlength: 10,
+            maxlength: 10,
+          },
+        },
+        { 
+          type: 'text',
+          placeholder: 'Nombre',
+          attributes: {
+            minlength: 2,
+            maxlength: 15,
+          },
+        },
+        { 
+          type: 'text',
+          placeholder: 'Apellido',
+          attributes: {
+            minlength: 2,
+            maxlength: 15,
+          },
+        },
+        { 
+          type: 'text',
+          placeholder: 'Email',
+          attributes: {
+            minlength: 5,
+            maxlength: 40,
+          },
+        },
+        { 
+          type: 'text',
+          placeholder: 'Sede',
+          attributes: {
+            minlength: 5,
+            maxlength: 20,
+          },
+        }
+      ],
+      buttons: [
+        {
+          text: 'Registrar',
+          cssClass: 'alert-button-confirm',
+          handler: (x => setTimeout(() => {
+            this.Toast(this.messageToast(this.messageRegister), 'cloud')
+          }, 500))
+        },
+      ],
     });
 
     await alert.present();

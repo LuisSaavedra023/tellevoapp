@@ -23,12 +23,12 @@
       <!-- maps -->
       <div id="map"></div>
       <!-- maps -->
-      <ng-container *ngIf="pasajeros.length > 0 else nopassengers">
+      <ng-container *ngIf="pasajeros.length > 0 else noregister">
 
         <ion-row class="modify-data">
           <p id="tarifa">Tarifa actual: interpolacion</p>
           
-          <button mat-raised-button id="button-modify">
+          <button mat-raised-button id="button-modify" (click)="modifyData()">
             <mat-icon>cached </mat-icon> 
             Modificar Datos
             </button>
@@ -38,7 +38,7 @@
         <ion-item  id="input-driver">
           <ion-label class="label-input">Modificar tarifa:</ion-label>
           <ion-input placeholder="Valor tarifa" [clearInput]="true" type="text" minlenght="3" maxlength="4"></ion-input>
-          <button mat-icon-button id="color-button">
+          <button mat-icon-button id="color-button" (click)="modifyRate()">
             <mat-icon>cached</mat-icon>
           </button>
         </ion-item>
@@ -74,12 +74,12 @@
             Iniciar
           </button>
         
-          <button mat-raised-button id="button-cancel">
+          <button mat-raised-button id="button-cancel" (click)="cancelTravel()">
             <mat-icon> close</mat-icon>
             Cancelar
           </button>
         
-          <button mat-raised-button id="button-exit"  [routerLink]="['/home']">
+          <button mat-raised-button id="button-exit" (click)="alertExit() ">
             <mat-icon>reply</mat-icon>
             Salir
           </button>
@@ -87,7 +87,7 @@
 
       </ng-container>
       <!-- Si no existen pasajeros en la bd se mostrará el siguiente template -->
-      <ng-template #nopassengers >
+      <ng-template #nopassengers>
         <div id="nopassengers">
           <span class="material-icons md-48 animate__animated animate__zoomOutRight" id="error-icon">
             directions_walk
@@ -115,7 +115,7 @@
         </div>
         <ion-footer id="footer-register" class="animate__animated animate__fadeInUp">
           
-          <button mat-raised-button id="driver" >
+          <button mat-raised-button id="driver" (click)="alertRegister()">
             <span class="material-icons md-45" >local_taxi</span>
             Registrar 
           </button>
@@ -153,7 +153,7 @@
         </div>
         
         <ion-row class="content-report">
-          <button mat-raised-button id="button-travel">
+          <button mat-raised-button id="button-travel" (click)="alertReport()">
             <mat-icon>warning</mat-icon>
             Ingresar reporte
           </button>
@@ -161,11 +161,11 @@
 
         <ion-footer id="footer" class="animate__animated animate__fadeInUp">
       
-          <button mat-raised-button id="button-finish"  [routerLink]="['/home']">
+          <button mat-raised-button id="button-finish" (click)="finishAlert()">
             <span class="material-icons md-36 " >
               done
             </span>
-            Finalizar viaje
+            Finalizar
             
           </button>
 
