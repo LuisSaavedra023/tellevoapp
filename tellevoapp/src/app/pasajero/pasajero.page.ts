@@ -4,7 +4,8 @@ import { Component, OnInit, ViewChild, } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
-import { Map, marker, tileLayer } from 'leaflet';
+import { Map, marker, tileLayer} from 'leaflet';
+import * as L from 'leaflet';
 
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -40,15 +41,28 @@ export class PasajeroPage implements OnInit {
     return `${maxLength - inputLength} caractéres restantes`;
   }
   /**********Maps**********/
-  showMap(){
+  async showMap(){
     //cargado de mapa con las coordenadas de inicio.
     const map = new Map('map').setView([-33.59901, -70.5784], 13);
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+    
+    const api = 'https://nominatim.openstreetmap.org/search?street=eugenio guzman 714&format=json';
+    
+    const data =  await fetch(api).then(
+      response => 
+      response.json()
+      )
+    .catch(error => console.log(error))
+    
+    console.log(data[0].lat + ' ' + data[0].lon)
+     
     //**********Marker**********/
     marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
+    
+    marker([data[0].lat, data[0].lon]).addTo(map).bindPopup("Domicilio").openPopup();
     //**********Marker**********/
     //renderización del 100% del mapa en el contenedor (div)
     map.whenReady(() => {

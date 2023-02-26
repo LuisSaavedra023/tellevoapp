@@ -22,7 +22,7 @@
   </div>
 
   <div>
-    <button mat-fab  id="button1" [routerLink]="['/restablecercontrasenia']">
+    <button mat-fab  id="button1" (click)="presentAlert('<span>Datos modificados con éxito.</span>')">
       <!-- Restablecer -->
       <mat-icon> cached </mat-icon>
     </button>
