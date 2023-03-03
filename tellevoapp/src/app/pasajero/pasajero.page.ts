@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild, } from '@angular/core';
+import { Component,  OnInit, ViewChild, } from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -11,6 +11,8 @@ import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
+
+import {MapService} from 'src/app/services/map.service'
 
 //****prueba datos para ambas tablas */
 export interface Passengers {
@@ -30,48 +32,23 @@ export interface Drivers {
   selector: 'app-pasajero',
   templateUrl: './pasajero.page.html',
   styleUrls: ['./pasajero.page.scss'],
-  
+  providers: [[MapService]]
 })
 
 export class PasajeroPage implements OnInit {
   
-  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController) { }
+  data = {
+
+    address : ''
+  }
+  //permite la integración dinámica de markers.
+  map: any;
+
+  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController, private mapService: MapService) { }
   //creación de método para contar los caractéres de la patente.
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
   }
-  /**********Maps**********/
-  async showMap(){
-    //cargado de mapa con las coordenadas de inicio.
-    const map = new Map('map').setView([-33.59901, -70.5784], 13);
-    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    
-    const api = 'https://nominatim.openstreetmap.org/search?street=eugenio guzman 714&format=json';
-    
-    const data =  await fetch(api).then(
-      response => 
-      response.json()
-      )
-    .catch(error => console.log(error))
-    
-    console.log(data[0].lat + ' ' + data[0].lon)
-     
-    //**********Marker**********/
-    marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
-    
-    marker([data[0].lat, data[0].lon]).addTo(map).bindPopup("Domicilio").openPopup();
-    //**********Marker**********/
-    //renderización del 100% del mapa en el contenedor (div)
-    map.whenReady(() => {
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 100);
-    });
-  }
-  /**********Maps**********/
   //*****prueba tabla inicio */
   conductores: Drivers[] = [
     {nombre: "Luis Saavedra", patente: 'lvuh93',capacidad: 2, tarifa: 1000, position: 1},
@@ -131,7 +108,7 @@ export class PasajeroPage implements OnInit {
   }
   //*****prueba tablas */
   ngAfterViewInit() {
-    this.showMap();
+    this.mapService.showMap() 
     /**table */
     this.dataDrivers.paginator = this.paginatorInit;
     this.dataSource.paginator = this.paginatorHistory;
@@ -144,6 +121,7 @@ export class PasajeroPage implements OnInit {
   messageCancelTravel = '<span>Viaje cancelado.</span>';
   messageReport = '<span>Reporte enviado.</span>';
   messageRegister = '<span>Alumno insertado.</span>'
+  messageEmptyAddress = '<span>Ingresa una dirección.</span>'
 
   messageToast(message: string){
 
@@ -164,8 +142,21 @@ export class PasajeroPage implements OnInit {
     await toast.present();
   }
   //***mensajes toast */
-  //alert que contiene la modificación de la tarifa y el inicio del viaje.
+  getAddress(){
+    // when the user doesnt enter an address.
+    if (this.data.address.length === 0){ 
+        
+      this.Toast(this.messageEmptyAddress, 'close')
+    }else{
+      //save address the passengers
+      localStorage.setItem("address", this.data.address);
+      //called the method in mapservice.
+      this.mapService.api();
+    }
+  }
+  //alert que avisa al pasajero de iniciar el viaje.
   async presentAlert(message : string) {
+
     const alert = await this.alertController.create({
       header: 'DuocUc',
       message: message,
@@ -176,8 +167,9 @@ export class PasajeroPage implements OnInit {
       }],
       cssClass: 'alertCustomCss',
     });
-
+    
     await alert.present();
+    
   }
   //***cancel */
   async cancelTravel() {
@@ -330,6 +322,6 @@ export class PasajeroPage implements OnInit {
   }
   /**********alerts**********/
 
-  ngOnInit() { }
+  ngOnInit() {}
   
 }

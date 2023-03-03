@@ -34,6 +34,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatPaginatorModule,
     MatCheckboxModule
   ],
-  declarations: [PasajeroPage]
+  declarations: [PasajeroPage],
+  
 })
 export class PasajeroPageModule {}

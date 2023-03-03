@@ -10,6 +10,8 @@ import { ToastController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
 
+import {MapService} from 'src/app/services/map.service'
+
 //****prueba datos para ambas tablas */
 export interface Passengers {
   nombre: string;
@@ -25,30 +27,30 @@ export interface PeriodicElement {
   selector: 'app-conductor',
   templateUrl: './conductor.page.html',
   styleUrls: ['./conductor.page.scss'],
-  
+  providers: [[MapService]]
 })
 
 export class ConductorPage implements OnInit  {
 
-  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController) { }
+  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController, private mapService: MapService) { }
   /**********Maps**********/
-  showMap(){
-    //cargado de mapa con las coordenadas de inicio.
-    const map = new Map('map').setView([-33.59901, -70.5784], 13);
-    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    //**********Marker**********/
-    marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
-    //**********Marker**********/
-    //renderización del 100% del mapa en el contenedor (div)
-    map.whenReady(() => {
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 100);
-    });
-  }
+  // showMap(){
+  //   //cargado de mapa con las coordenadas de inicio.
+  //   const map = new Map('map').setView([-33.59901, -70.5784], 13);
+  //   tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //     maxZoom: 19,
+  //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  //   }).addTo(map);
+  //   //**********Marker**********/
+  //   marker([-33.59901, -70.5784]).addTo(map).bindPopup("Duoc Uc Puente Alto").openPopup();
+  //   //**********Marker**********/
+  //   //renderización del 100% del mapa en el contenedor (div)
+  //   map.whenReady(() => {
+  //     setTimeout(() => {
+  //       map.invalidateSize();
+  //     }, 100);
+  //   });
+  // }
   /**********Maps**********/
   //creación de método para contar los caractéres de la patente.
   customCounterFormatter(inputLength: number, maxLength: number) {
@@ -81,7 +83,7 @@ export class ConductorPage implements OnInit  {
   //****prueba tabla historial de viajes*/
   //*****prueba tablas */
   ngAfterViewInit() {
-    this.showMap();
+    this.mapService.showMap();
     /**table */
     this.dataSource.paginator = this.paginator;
     /**table */

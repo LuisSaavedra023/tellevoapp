@@ -30,8 +30,8 @@
 
         <ion-item  id="input-driver" >
           <ion-label class="label-input">Dirección:</ion-label>
-          <ion-input placeholder="ej: calle viva #174" [clearInput]="true" type="text" minlenght="15" maxlength="30" ></ion-input>
-          <button mat-raised-button id="color-button" (click)="presentAlert('<span>Dirección ingresada con éxito.</span>')">
+          <ion-input placeholder="ej: calle viva #174" [clearInput]="true" type="text" minlenght="15" maxlength="30" [(ngModel)]="data.address"></ion-input>
+          <button mat-raised-button id="color-button" (click)="getAddress()">
             <mat-icon>check</mat-icon>
           </button>
         </ion-item>
