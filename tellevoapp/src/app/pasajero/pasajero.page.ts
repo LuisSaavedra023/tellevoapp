@@ -4,9 +4,6 @@ import { Component,  OnInit, ViewChild, } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
-import { Map, marker, tileLayer} from 'leaflet';
-import * as L from 'leaflet';
-
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
@@ -14,12 +11,12 @@ import { Router } from '@angular/router';
 
 import {MapService} from 'src/app/services/map.service'
 
+import {HistoryTravel, Student} from 'src/app/interfaces/data'
+
+import {DatabaseService} from 'src/app/services/database.service'
+
 //****prueba datos para ambas tablas */
-export interface Passengers {
-  nombrePasajero: string;
-  direccionPasajero: string;
-  tarifaPasajero: number;
-}
+
 export interface Drivers {
   nombre: string;
   patente: string;
@@ -44,7 +41,7 @@ export class PasajeroPage implements OnInit {
   //permite la integración dinámica de markers.
   map: any;
 
-  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController, private mapService: MapService) { }
+  constructor(private alertController: AlertController, public route: Router, private toastController: ToastController, private mapService: MapService, private database: DatabaseService) { }
   //creación de método para contar los caractéres de la patente.
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractéres restantes`;
@@ -62,17 +59,17 @@ export class PasajeroPage implements OnInit {
   //***alias mat-paginator */
   @ViewChild('paginatorInit') paginatorInit: MatPaginator;
   //*****prueba tabla historial de viajes*/
-  pasajeros: Passengers[] = [
-    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
-    {nombrePasajero: "Marcelo Perez", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
-    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
-    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
-    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
-    {nombrePasajero: "Luis Saavedra", direccionPasajero: 'Calle siempre viva 174', tarifaPasajero: 1000},
+  pasajeros: HistoryTravel[] = [
+    {name: "Luis Saavedra", address: 'Calle siempre viva 174', value: 1000},
+    {name: "Marcelo Perez", address: 'Calle siempre viva 174', value: 1000},
+    {name: "Luis Saavedra", address: 'Calle siempre viva 174', value: 1000},
+    {name: "Luis Saavedra", address: 'Calle siempre viva 174', value: 1000},
+    {name: "Luis Saavedra", address: 'Calle siempre viva 174', value: 1000},
+    {name: "Luis Saavedra", address: 'Calle siempre viva 174', value: 1000},
   ];
 
   displayedColumns: string[] = ['pasajero', 'direccion', 'tarifa'];
-  dataSource = new MatTableDataSource<Passengers>(this.pasajeros);
+  dataSource = new MatTableDataSource<HistoryTravel>(this.pasajeros);
 
   @ViewChild('paginatorHistory') paginatorHistory: MatPaginator;
 
@@ -117,11 +114,13 @@ export class PasajeroPage implements OnInit {
   }
   //*****prueba tablas */
   /**********alerts**********/
-  //***mensajes toast */
+  //***messages toast */
   messageCancelTravel = '<span>Viaje cancelado.</span>';
   messageReport = '<span>Reporte enviado.</span>';
-  messageRegister = '<span>Alumno insertado.</span>'
   messageEmptyAddress = '<span>Ingresa una dirección.</span>'
+  //***messages alert */
+  messagesucces = '<span>Registrado correctamente.</span>'
+  messageerror = '<span>No se ha podido registrar al alumno.</span>'
 
   messageToast(message: string){
 
@@ -260,6 +259,22 @@ export class PasajeroPage implements OnInit {
 
     await alert.present();
   }
+  async alertInsert(message: string) {
+
+    const alert = await this.alertController.create({
+      header: 'DuocUc',
+      message: message,
+      buttons: [{
+        text: 'Ok',
+        cssClass: 'alert-button-confirm',
+          
+      }],
+      cssClass: 'alertCustomCss',
+    });
+    
+    await alert.present();
+    
+  }
   //***register */
   async alertRegister() {
     const alert = await this.alertController.create({
@@ -289,6 +304,7 @@ export class PasajeroPage implements OnInit {
             minlength: 2,
             maxlength: 15,
           },
+          
         },
         { 
           type: 'text',
@@ -296,6 +312,14 @@ export class PasajeroPage implements OnInit {
           attributes: {
             minlength: 5,
             maxlength: 40,
+          },
+        },
+        { 
+          type: 'number',
+          placeholder: 'Contraseña',
+          attributes: {
+            minlength: 4,
+            maxlength: 4,
           },
         },
         { 
@@ -311,9 +335,34 @@ export class PasajeroPage implements OnInit {
         {
           text: 'Registrar',
           cssClass: 'alert-button-confirm',
-          handler: (x => setTimeout(() => {
-            this.Toast(this.messageToast(this.messageRegister), 'cloud')
-          }, 500))
+          handler: response => {setTimeout( () => {
+            //data content the information the passenger.
+            let data:Student[]=[
+              {
+                rut: response[0],
+                name: response[1],
+                last_name: response[2],
+                email: response[3],
+                password: response[4],
+                campus: String(response[5]).toLowerCase()
+              }
+            ]
+            //name for insert document.
+            const document = response[1] + '_' + response[2];
+            //called to method the database service.
+            this.database.insertStudent(data[0], document).then(
+              response=>{
+                //show alert when the data is inserted succes.
+                this.alertInsert(this.messagesucces);
+              }
+            ).catch(
+              response=>{
+                //show alert when the data is not inserted.
+              this.alertInsert(this.messageerror);
+              }
+            )
+          }, 500)}
+          
         },
       ],
     });
@@ -321,7 +370,6 @@ export class PasajeroPage implements OnInit {
     await alert.present();
   }
   /**********alerts**********/
-
   ngOnInit() {}
   
 }
